@@ -23,5 +23,5 @@ class TestRequest(object):
                         verify=False)
         logging.info(r)
         #logging.info(r.text)
-        #序列化json格式
+        #序列化json格式1
         logging.info(json.dumps(r.json(),indent=2))
