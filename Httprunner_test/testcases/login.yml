@@ -1,7 +1,10 @@
 config:
     name: login system
-    variables: {}
+    variables:
+        password: ${ENV(PASSWORD)}
+        phone: ${ENV(USERNAME)}
     verify: False
+    base_url: ${get_base_url()}
 
 teststeps:
 -   name: /
@@ -13,7 +16,13 @@ teststeps:
             user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
         method: GET
-        url: https://mubu.com/
+        url: /
+
+    #加载首页后，休眠5秒，在该步骤运行结束后运行
+    #teardown_hooks:
+     #   -   ${sleep(5)}
+
+
     validate:
     -   eq:
         - status_code
@@ -27,7 +36,7 @@ teststeps:
             user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
         method: GET
-        url: https://mubu.com/login
+        url: /login
     validate:
     -   eq:
         - status_code
@@ -49,8 +58,9 @@ teststeps:
 -   name: /api/login/submit
     request:
         data:
-            password: a12345678
-            phone: '15642391086'
+            #调用参数
+            password: ${password}
+            phone: ${phone}
             remember: 'true'
         headers:
             content-type: application/x-www-form-urlencoded; charset=UTF-8

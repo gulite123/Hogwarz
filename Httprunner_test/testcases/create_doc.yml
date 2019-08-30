@@ -2,6 +2,11 @@ config:
     name: create new doc
     variables: {}
     verify: False
+    #用例导出结果
+    export:
+        - documentId
+        - memberId
+        - userId
 
 teststeps:
 -   name: login
@@ -46,7 +51,11 @@ teststeps:
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
         method: GET
         url: https://mubu.com/doc${documentId}
+    #调用函数，在该步骤运行前运行
+    setup_hooks:
+        - ${print_documentId($documentId)}
 
+    #提取参数
     extract:
             memberId: "memberId: '(.*)'"
             userId: "var currentUserId = '(.*)'"
@@ -79,6 +88,13 @@ teststeps:
     -   eq:
         - content.msg
         - Success
+
+    #增加校验
+    -   eq:
+        - content.data.name
+        - "无标题"
+
+
 -   name: /api/user/current_level
     request:
         data: ''
@@ -122,6 +138,11 @@ teststeps:
     -   eq:
         - content.msg
         - Success
+        #校验长度
+    -   len_eq:
+        - content.data.ticket
+        - 32
+
 -   name: /api/middleware/members
     request:
         headers:

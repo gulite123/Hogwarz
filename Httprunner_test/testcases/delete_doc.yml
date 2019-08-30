@@ -3,6 +3,15 @@ config:
     variables: {}
     verify: False
 
+teststeps:
+    #引入用例并引入用例执行后的结果
+-   name: create new doc
+    testcase: testcases/create_doc.yml
+    extract:
+        - documentId
+        - memberId
+        - userId
+
 -   name: /api/list/delete_doc
     request:
         data:
