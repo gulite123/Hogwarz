@@ -1,0 +1,14 @@
+
+config:
+    name: "login with different accounts"
+
+
+testcases:
+  #所要调用的用例名称
+-
+    name: login system
+    testcase: testcases/login.yml
+    #参数化
+    parameters:
+      #所有参数以中间的短线隔开,此处传了2个参数
+        phone-password: ${P(data/accounts.csv)}

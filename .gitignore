@@ -1,3 +1,6 @@
-.idea
-venv
-interface
+.env
+API_Testing/*
+APITest/*
+*.pyc
+.python-version
+logs/*

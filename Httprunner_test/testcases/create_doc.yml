@@ -26,7 +26,7 @@ teststeps:
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
             x-requested-with: XMLHttpRequest
         method: POST
-        url: https://mubu.com/api/list/create_doc
+        url: /api/list/create_doc
     #提取参数
     extract:
         documentId: content.data.id
@@ -50,7 +50,7 @@ teststeps:
             user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
         method: GET
-        url: https://mubu.com/doc${documentId}
+        url: /doc${documentId}
     #调用函数，在该步骤运行前运行
     setup_hooks:
         - ${print_documentId($documentId)}
@@ -77,7 +77,7 @@ teststeps:
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
             x-requested-with: XMLHttpRequest
         method: POST
-        url: https://mubu.com/api/document/get
+        url: /api/document/get
     validate:
     -   eq:
         - status_code
@@ -107,7 +107,7 @@ teststeps:
         method: POST
         params:
             document_id: ${documentId}
-        url: https://mubu.com/api/user/current_level
+        url: /api/user/current_level
     validate:
     -   eq:
         - status_code
@@ -127,7 +127,7 @@ teststeps:
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
             x-requested-with: XMLHttpRequest
         method: GET
-        url: https://mubu.com/api/ticket/register
+        url: /api/ticket/register
     validate:
     -   eq:
         - status_code
@@ -156,7 +156,7 @@ teststeps:
         params:
             documentId: ${documentId}
             memberId: '${memberId}'
-        url: https://mubu.com/api/middleware/members
+        url: /api/middleware/members
     validate:
     -   eq:
         - status_code
@@ -198,7 +198,7 @@ teststeps:
             requestId: MESSAGE:${userId}:${memberId}:2
             token: ${documentId}
         method: POST
-        url: https://mubu.com/api/middleware/message
+        url: /api/middleware/message
     validate:
     -   eq:
         - status_code
@@ -240,7 +240,7 @@ teststeps:
             requestId: MESSAGE:${userId}:${memberId}:4
             token: ${documentId}
         method: POST
-        url: https://mubu.com/api/middleware/message
+        url: /api/middleware/message
     validate:
     -   eq:
         - status_code
@@ -286,7 +286,7 @@ teststeps:
             requestId: MESSAGE:${userId}:${memberId}:6
             token: ${documentId}
         method: POST
-        url: https://mubu.com/api/middleware/message
+        url: /api/middleware/message
     validate:
     -   eq:
         - status_code
@@ -328,7 +328,7 @@ teststeps:
             requestId: MESSAGE:${userId}:${memberId}:7
             token: ${documentId}
         method: POST
-        url: https://mubu.com/api/middleware/message
+        url: /api/middleware/message
     validate:
     -   eq:
         - status_code
@@ -370,7 +370,7 @@ teststeps:
             requestId: MESSAGE:${userId}:${memberId}:9
             token: ${documentId}
         method: POST
-        url: https://mubu.com/api/middleware/message
+        url: /api/middleware/message
     validate:
     -   eq:
         - status_code
@@ -412,7 +412,7 @@ teststeps:
             requestId: MESSAGE:${userId}:${memberId}:11
             token: ${documentId}
         method: POST
-        url: https://mubu.com/api/middleware/message
+        url: /api/middleware/message
     validate:
     -   eq:
         - status_code
@@ -454,7 +454,7 @@ teststeps:
             requestId: MESSAGE:${userId}:${memberId}:12
             token: ${documentId}
         method: POST
-        url: https://mubu.com/api/middleware/message
+        url: /api/middleware/message
     validate:
     -   eq:
         - status_code
@@ -496,7 +496,7 @@ teststeps:
             requestId: MESSAGE:${userId}:${memberId}:14
             token: ${documentId}
         method: POST
-        url: https://mubu.com/api/middleware/message
+        url: /api/middleware/message
     validate:
     -   eq:
         - status_code
@@ -544,7 +544,7 @@ teststeps:
             requestId: MESSAGE:${userId}:${memberId}:16
             token: ${documentId}
         method: POST
-        url: https://mubu.com/api/middleware/message
+        url: /api/middleware/message
     validate:
     -   eq:
         - status_code
@@ -589,7 +589,7 @@ teststeps:
             requestId: MESSAGE:${userId}:${memberId}:18
             token: ${documentId}
         method: POST
-        url: https://mubu.com/api/middleware/message
+        url: /api/middleware/message
     validate:
     -   eq:
         - status_code
@@ -634,7 +634,7 @@ teststeps:
             requestId: MESSAGE:${userId}:${memberId}:20
             token: ${documentId}
         method: POST
-        url: https://mubu.com/api/middleware/message
+        url: /api/middleware/message
     validate:
     -   eq:
         - status_code
@@ -679,7 +679,7 @@ teststeps:
             requestId: MESSAGE:${userId}:${memberId}:22
             token: ${documentId}
         method: POST
-        url: https://mubu.com/api/middleware/message
+        url: /api/middleware/message
     validate:
     -   eq:
         - status_code
@@ -732,7 +732,7 @@ teststeps:
             requestId: MESSAGE:${userId}:${memberId}:23
             token: ${documentId}
         method: POST
-        url: https://mubu.com/api/middleware/message
+        url: /api/middleware/message
     validate:
     -   eq:
         - status_code
@@ -777,7 +777,7 @@ teststeps:
             requestId: MESSAGE:${userId}:${memberId}:29
             token: ${documentId}
         method: POST
-        url: https://mubu.com/api/middleware/message
+        url: /api/middleware/message
     validate:
     -   eq:
         - status_code
@@ -830,7 +830,7 @@ teststeps:
             requestId: MESSAGE:${userId}:${memberId}:32
             token: ${documentId}
         method: POST
-        url: https://mubu.com/api/middleware/message
+        url: /api/middleware/message
     validate:
     -   eq:
         - status_code
@@ -850,7 +850,7 @@ teststeps:
             user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
         method: GET
-        url: https://mubu.com/list
+        url: /list
     validate:
     -   eq:
         - status_code
@@ -865,7 +865,7 @@ teststeps:
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
             x-requested-with: XMLHttpRequest
         method: POST
-        url: https://mubu.com/api/list/tip_new_update
+        url: /api/list/tip_new_update
     validate:
     -   eq:
         - status_code
@@ -891,7 +891,7 @@ teststeps:
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
             x-requested-with: XMLHttpRequest
         method: POST
-        url: https://mubu.com/api/list/get
+        url: /api/list/get
     validate:
     -   eq:
         - status_code
@@ -912,7 +912,7 @@ teststeps:
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
             x-requested-with: XMLHttpRequest
         method: POST
-        url: https://mubu.com/api/message/get_message_unread
+        url: /api/message/get_message_unread
     validate:
     -   eq:
         - status_code

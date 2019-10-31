@@ -41,6 +41,7 @@ teststeps:
     -   eq:
         - status_code
         - 200
+
 -   name: /login/password
     request:
         headers:
@@ -50,27 +51,33 @@ teststeps:
             user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
         method: GET
-        url: https://mubu.com/login/password
+        url: /login/password
     validate:
     -   eq:
         - status_code
         - 200
 -   name: /api/login/submit
-    request:
-        data:
-            #调用参数
-            password: ${password}
-            phone: ${phone}
-            remember: 'true'
-        headers:
-            content-type: application/x-www-form-urlencoded; charset=UTF-8
-            sec-fetch-mode: cors
-            sec-fetch-site: same-origin
-            user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36
-                (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
-            x-requested-with: XMLHttpRequest
-        method: POST
-        url: https://mubu.com/api/login/submit
+    variables:
+        phone: ${phone}
+        password: ${password}
+    api: api/login_submit.yml
+#    request:
+#        data:
+#            #调用参数
+#            password: ${password}
+#            phone: ${phone}
+#            remember: 'true'
+#        headers:
+#            content-type: application/x-www-form-urlencoded; charset=UTF-8
+#            sec-fetch-mode: cors
+#            sec-fetch-site: same-origin
+#            user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36
+#                (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
+#            x-requested-with: XMLHttpRequest
+#        method: POST
+#        url: /api/login/submit
+
+
     validate:
     -   eq:
         - status_code
@@ -90,7 +97,7 @@ teststeps:
             user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
         method: GET
-        url: https://mubu.com/list
+        url: /list
     validate:
     -   eq:
         - status_code
@@ -105,7 +112,7 @@ teststeps:
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
             x-requested-with: XMLHttpRequest
         method: POST
-        url: https://mubu.com/api/list/tip_new_update
+        url: /api/list/tip_new_update
     validate:
     -   eq:
         - status_code
@@ -131,7 +138,7 @@ teststeps:
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
             x-requested-with: XMLHttpRequest
         method: POST
-        url: https://mubu.com/api/list/get
+        url: /api/list/get
     validate:
     -   eq:
         - status_code
@@ -152,7 +159,7 @@ teststeps:
                 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
             x-requested-with: XMLHttpRequest
         method: POST
-        url: https://mubu.com/api/message/get_message_unread
+        url: /api/message/get_message_unread
     validate:
     -   eq:
         - status_code

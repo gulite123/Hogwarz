@@ -1,0 +1,36 @@
+
+name: /api/login/submit
+
+verify: False
+
+variables:
+    password: ${ENV(PASSWORD)}
+    phone: ${ENV(USERNAME)}
+
+base_url: ${get_base_url()}
+
+request:
+    data:
+        #调用参数
+        password: ${password}
+        phone: ${phone}
+        remember: 'true'
+    headers:
+        content-type: application/x-www-form-urlencoded; charset=UTF-8
+        sec-fetch-mode: cors
+        sec-fetch-site: same-origin
+        user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36
+            (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
+        x-requested-with: XMLHttpRequest
+    method: POST
+    url: /api/login/submit
+validate:
+    - eq:
+          - status_code
+          - 200
+    - eq:
+        - content.code
+        - 0
+    - eq:
+        - content.msg
+        - null
